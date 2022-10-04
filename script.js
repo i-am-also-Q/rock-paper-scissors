@@ -55,8 +55,41 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
-let playerChoice = getPlayerChoice();
-let computerChoice = getComputerChoice();
+//calls the playRound function to play five rounds while keeping score and then reports a winner at the end of the game
+function game() {
+    let player = 0;
+    let computer = 0;
+    let playerChoice;
+    let computerChoice;
 
-console.log(computerChoice);
-console.log(playRound(playerChoice, computerChoice));
+    for (let rounds = 0; rounds < 5; rounds++) {
+        playerChoice = getPlayerChoice();
+        computerChoice = getComputerChoice();
+
+        console.log(computerChoice);
+
+        let result = playRound(playerChoice, computerChoice);
+        console.log(result);
+
+        if (result === "you lose") {
+            computer++;
+        } else if (result === "you win") {
+            player++;
+        } else if (result === "tie") {
+            computer++;
+            player++;
+        }
+    }
+
+    console.log(`Player: ${player} \nComputer: ${computer}`);
+
+    if (player > computer) {
+        console.log("You've won the game! Congrats!");
+    } else if (player < computer) {
+        console.log("I'm sorry, but you've lost the game. Try again.");
+    } else {
+        console.log("It's a tie!");
+    }
+}
+
+game();
