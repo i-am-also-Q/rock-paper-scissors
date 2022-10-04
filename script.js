@@ -17,7 +17,44 @@ function getComputerChoice() {
         computerChoice = "Scissors";
     }
 
-    console.log(computerChoice);
+    return computerChoice;
 }
 
-getComputerChoice();
+//play a single round of RPS with two parameters: playerSelection and computerSelection
+//first, prompt the player for a selection of rock, paper, or scissors
+//then write if else statements to determine which values beat which
+//write an else in case the player's input is invalid
+//return the results
+function getPlayerChoice() {
+    let playerChoice = prompt("Rock, Paper, or Scissors?");
+    return playerChoice;
+}
+
+function playRound(playerSelection, computerSelection) {
+    let result;
+
+    if (
+        (playerSelection === "Rock" && computerSelection === "Paper") ||
+        (playerSelection === "Paper" && computerSelection === "Scissors") ||
+        (playerSelection === "Scissors" && computerSelection === "Rock")
+    ) {
+        result = "you lose";
+    } else if (
+        (playerSelection === "Paper" && computerSelection === "Rock") ||
+        (playerSelection === "Scissors" && computerSelection === "Paper") ||
+        (playerSelection === "Rock" && computerSelection === "Scissors")
+    ) {
+        result = "you win";
+    } else if (playerSelection === computerSelection) {
+        result = "tie";
+    } else {
+        result = "oops";
+    }
+
+    return result;
+}
+
+let playerChoice = getPlayerChoice();
+let computerChoice = getComputerChoice();
+console.log(computerChoice);
+console.log(playRound(playerChoice, computerChoice));
