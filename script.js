@@ -1,5 +1,6 @@
 // Q: this is a test
 document.getElementById("output").innerHTML += "Hello World!";
+
 //randomly return a rock, paper, or scissors value to determine the computer opponent's moves
 //randomly generate one of three integers
 //each integer corresponds to rock, paper, or scissors, like so:
@@ -51,7 +52,7 @@ function playRound(playerSelection, computerSelection) {
 	} else if (playerSelection === computerSelection) {
 		result = "tie";
 	} else {
-		result = "oops";
+		result = `oops! Damage taken by ${computerSelection}`;
 	}
 
 	return result;
@@ -68,23 +69,17 @@ function game() {
 		playerChoice = getPlayerChoice();
 		computerChoice = getComputerChoice();
 
-		document.getElementById("round").innerHTML += " " + (rounds + 1);
-
-		document.getElementById("ai").innerHTML += computerChoice + " ";
-		document.getElementById("player").innerHTML += playerChoice + " ";
-
 		let result = playRound(playerChoice, computerChoice);
-		document.getElementById("result").innerHTML +=
-			"<br> Round " +
-			(rounds + 1) +
-			" [ " +
-			result +
-			" ] <br>" +
-			"You | AI<br>" +
-			playerChoice +
-			" | " +
-			computerChoice +
-			"<br>";
+
+		// insert new row to score-board table
+		document.getElementById("score-board").innerHTML += `
+            <tr>
+                <td>${rounds + 1}</td>
+                <td>${playerChoice}</td>
+                <td>${computerChoice}</td>
+                <td class="result">${result}</td>
+            </tr>
+		`;
 
 		if (result === "you lose") {
 			computer++;
@@ -95,9 +90,6 @@ function game() {
 			player++;
 		}
 	}
-
-	document.GetElementById("misc").innerHTML =
-		"Player: ${player} \nComputer: ${computer}";
 
 	if (player > computer) {
 		document.GetElementById("output").innerHTML =

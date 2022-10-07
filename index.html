@@ -5,15 +5,22 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Rock, Paper, Scissors</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <p id="round">Round: </p>
         <p id="output">OUTPUT: </p>
         <p id="misc">Misc: </p>
-        <p id="ai">ai &nbsp;&nbsp;&emsp;: </p>
-        <p id="player">player: </p>
-        <p id="result">result: </p>
-        <button onclick="">I am button</button>
+
+        <table id="score-board" style="font-family: monospace;">
+            <tr id="score-board-row-header">
+                <th id="score-board-round">Round</th>
+                <th id="score-board-playerChoice">Player</th>
+                <th id="score-board-computerChoice">Computer</th>
+                <th id="score-board-result">Result</th>
+            </tr>
+
+        </table>
 
         <script src="./script.js"></script>
     </body>
